@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>DOM-menu</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="icon" href="img/car-icon.jpg" type="image/x-icon">
+		<script>
+			document.body.style.backgroundImage = "url('img/fiogrid.jpg')";
+
+const container = document.createElement('div');
+container.className = "container";
+window.document.body.appendChild(container);
+
+const menu = document.createElement('nav');
+menu.className = "menu";
+
+let nav =  document.querySelector('.container');
+if (nav.matches('.container') === true) {
+	nav.appendChild(menu);
+}
+
+const list = document.createElement('ul');
+list.className = "menu-list";
+
+let ul =  document.querySelector('.menu');
+if (ul.matches('.menu') === true) {
+	ul.appendChild(list);
+}
+
+const concern = ['INFORMER', 'VOLKSWAGEN AUTO GROUP (VAG)', 'TOYOTA MOTOR CORP.', 'GENERAL MOTORS', 'FIAT'];
+
+for (let i=0; i<5; i++) {
+	const rowList = document.createElement('li');
+	rowList.className = "menu-row";
+
+	let menuRow =  document.querySelector('.menu-list');
+	menuRow.appendChild(rowList);	
+
+		const link = document.createElement('a');
+		link.setAttribute('href', '#');
+		link.className = "menu-link";
+		link.insertAdjacentHTML('afterbegin', `${concern[i]}`);		
+
+		let menuLink =  document.querySelectorAll('.menu-row');
+		menuLink.forEach(function(e){
+			e.appendChild(link);
+		});
+}
+
+		</script>
+	</head>
+	<body >
+	<!-- <body style="background-image: url(img/fiogrid.jpg);"> -->
+		<!-- <div class="container">
+			<nav class="menu">
+				<ul class="menu-list">
+					<li class="menu-row">
+						<a href="#" class="menu-link">INFORMER</a>
+					</li>
+					<li class="menu-row">
+						<a href="#" class="menu-link">VOLKSWAGEN AUTO GROUP (VAG)</a>
+					</li>
+					<li class="menu-row">
+						<a href="#" class="menu-link">TOYOTA MOTOR CORP.</a>
+					</li>
+					<li class="menu-row">
+						<a href="#" class="menu-link">GENERAL MOTORS</a>
+					</li>
+					<li class="menu-row">
+						<a href="#" class="menu-link">FIAT</a>
+					</li>
+				</ul>
+			</nav>
+			<main class="frame">
+				<figure class="brand">
+					<img src="img/volkswagen.png" alt="volkswagen logo" class="brand-link">
+				</figure>
+				<figure class="brand">
+					<img src="img/audi.gif" alt="audi logo" class="brand-link">
+				</figure>
+				<figure class="brand">
+					<img src="img/bentley.png" alt="bentley logo" class="brand-link">
+				</figure>
+				<figure class="brand">
+					<img src="img/lamborghini.png" alt="lamborghini logo" class="brand-link">
+				</figure>
+				<figure class="brand">
+					<img src="img/man.png" alt="man logo" class="brand-link">
+				</figure>
+				<figure class="brand">
+					<img src="img/porshe.png" alt="porshe logo" class="brand-link">
+				</figure>
+				<figure class="brand">
+					<img src="img/bugatti.png" alt="bugatti logo" class="brand-link">
+				</figure>
+				<figure class="brand">
+					<img src="img/seat.png" alt="seat logo" class="brand-link">
+				</figure>
+				<figure class="brand">
+					<img src="img/scania.png" alt="scania logo" class="brand-link">
+				</figure>
+				<figure class="brand">
+					<img src="img/skoda.png" alt="skoda logo" class="brand-link">
+				</figure>
+				
+			</main>
+		</div> -->
+		<script type="text/javascript" src="js/menu.js"></script>
+	</body>
+</html>
