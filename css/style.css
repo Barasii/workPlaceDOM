@@ -119,3 +119,8 @@ body {
     height: auto;
     color: #fff;
 }
+
+.info {
+	color: #fff;
+    font-size: inherit;
+}

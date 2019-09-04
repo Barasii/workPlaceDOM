@@ -6,27 +6,16 @@ window.document.body.appendChild(container);
 
 const menu = document.createElement('nav');
 menu.classList.add("menu");
-
-let nav =  document.querySelector('.container');
-if (nav.classList.contains("container")) {
-	nav.appendChild(menu);
-}
+container.appendChild(menu);
 
 const frame = document.createElement('main');
 frame.classList.add("frame");
-
-let main =  document.querySelector('.container');
-if (main.classList.contains("container")) {
-	main.appendChild(frame);
-}
+container.appendChild(frame);
 
 const list = document.createElement('ul');
 list.classList.add("menu-list");
+menu.appendChild(list);
 
-let ul =  document.querySelector('.menu');
-if (ul.classList.contains("menu")) {
-	ul.appendChild(list);
-}
 
 const automobile = [ 
 	{
@@ -50,119 +39,88 @@ const automobile = [
 		brand: ["fiat", "alfa romeo", "ferrari", "chrysler", "dodge", "ram", "jeep", "lancia", "masserati"]
 	},
 ];
-console.log(automobile[1].brand[1]);
-for (let i=0; i<automobile.length; i++) {
+
+automobile.forEach(function(e){
 	const rowList = document.createElement('li');
 	rowList.classList.add("menu-row");
-
-	let menuRow =  document.querySelector('.menu-list');
-	if (menuRow.classList.contains("menu-list")) {
-		menuRow.appendChild(rowList);
-	}	
+	list.appendChild(rowList);
 	
 	const link = document.createElement('a');
 	link.href = '#';
 	link.classList.add("menu-link");
-	link.insertAdjacentHTML('afterbegin', `${automobile[i].concern}`);		
+	link.insertAdjacentHTML('afterbegin', `${e.concern}`);		
 
-	let menuLink =  document.querySelectorAll('.menu-row');
-	menuLink.forEach(function(e){
-			e.appendChild(link);
-			e.addEventListener("click", () => {
-				switch (automobile[i].concern) {
-					case automobile[1].concern: {
-						// for (let j=0; j<automobile[1].brand.length; j++){
-						automobile[1].brand.forEach(function(b){
-			console.log(b);
-
-							const logo = document.createElement('figure');
-							logo.classList.add("brand");
-
-							let brand =  document.querySelector('.frame');
-							// brand.insertAdjacentHTML("afterbegin", logo);
-							if (brand.classList.contains('frame')) {
-								brand.appendChild(logo.cloneNode(true));
-							}
-
-							const img = document.createElement('img');
-							img.src = `img/vag/${b}.png`;
-							img.alt = `logo ${b}`;
-							img.classList.add("brand-link");
-
-							let png =  document.querySelector('.brand');
-							if (png.classList.contains('brand')) {
-								png.appendChild(img);
-							}
-
-
-						})
-					} break;
-				}
-			});
-
+	document.querySelectorAll('.menu-row').forEach(function(e){
+			e.appendChild(link);			
 	});
-
-}
+});
  
-// function createImg() {
-// 	const logo = document.createElement('figure');
-// 	logo.classList.add("brand");
 
-// 	let brand =  document.querySelector('.frame');
-// 	if (brand.classList.contains('frame')) {
-// 		brand.appendChild(logo);
-// 	}
+document.querySelectorAll('.menu-link').forEach(function(e){	
+	e.addEventListener("click", (event) => {
+	let target = event.target;
 
-// 	const img = document.createElement('img');
-// 	// img.src = `img/${automobile[i]}`;
-// 	img.src = `#`;
-// 	img.alt = `logo`;
-// 	img.classList.add("brand-link");
+for (let i=1; i<automobile.length; i++){
+	// console.log(automobile[i].concern);
+	if (target.innerHTML == automobile[i].concern) {
+	// alert ("auto");
+		deleteImg();
+				automobile[i].brand.forEach(function(b){
+				let brand =  document.querySelector('.frame');
+				const logo = document.createElement('figure');
+				logo.classList.add("brand");
+				const img = document.createElement('img');
+				img.src = `img/${b}.png`;
+				img.alt = `logo ${b}`;
+				img.classList.add("brand-link");
+				logo.appendChild(img);	
+				brand.appendChild(logo);	
+			})
 
-// 	let png =  document.querySelector('.brand');
-// 	if (png.classList.contains('brand')) {
-// 		png.appendChild(img);
-// 	}
-// } 
+	} 
+	else if (target.innerHTML == automobile[0].concern) {
+			deleteImg();
+			let brand =  document.querySelector('.frame');
+			brand.insertAdjacentHTML('afterbegin', `<h6 class="info">${automobile[0].brand}</h6>`);
+		};
+};
+});
+});
 
-// e.addEventListener("click", () => {
-// 	let menuLink =  document.querySelectorAll('.menu-row');
-// 		console.log(menuLink);
-// 	for (let [k, v] of menuLink){
-// 		console.log(v);
-// 	}
-// 	menuLink.forEach(function(e){
-// 		for (let i=0; i<automobile[i].brand.length; i++){
-// // console.log(automobile[i].brand.length);
-// 			const logo = document.createElement('figure');
-// 			logo.classList.add("brand");
+function deleteImg() {
+	document.querySelector(".frame").innerHTML="";
+}
 
-// 			let brand =  document.querySelector('.frame');
-// 			if (brand.classList.contains('frame')) {
-// 			brand.appendChild(logo);
-// 			}
 
-// 			const img = document.createElement('img');
-// 			img.src = `img/${automobile[i]}`;
-// 			img.alt = `logo`;
-// 			img.classList.add("brand-link");
 
-// 			let png =  document.querySelector('.brand');
-// 			if (png.classList.contains('brand')) {
-// 			png.appendChild(img);
-// 			}
-// 		}
-// 	});
+
+	// }
+
+
+	// switch (target.innerHTML) {
+	// 	case automobile[0].concern: {
+	// 		deleteImg();
+	// 		let brand =  document.querySelector('.frame');
+	// 		brand.insertAdjacentHTML('afterbegin', `<h6 class="info">${automobile[0].brand}</h6>`);
+	// 	} break;
+	// 	case automobile[1].concern: {
+	// 		deleteImg();
+	// 		automobile[1].brand.forEach(function(b){
+	// 			let brand =  document.querySelector('.frame');
+	// 			const logo = document.createElement('figure');
+	// 			logo.classList.add("brand");
+	// 			const img = document.createElement('img');
+	// 			img.src = `img/${b}.png`;
+	// 			img.alt = `logo ${b}`;
+	// 			img.classList.add("brand-link");
+	// 			logo.appendChild(img);	
+	// 			brand.appendChild(logo);	
+	// 		})
+	// 	} break;
+	// }
 // });
-
-
-
-
-
-
-
-
-
+// });
+// });
 
 
 
