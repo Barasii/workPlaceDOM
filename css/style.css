@@ -14,8 +14,8 @@ body {
     font-weight: 500;
     line-height: 1.5;
     color: #222;
-    background-color: #fff;
-    background-image: url(img/fiogrid.jpg);
+    background-color: #000;
+	background-size: cover;
 }
 
 .container {
@@ -40,30 +40,46 @@ body {
 	padding-top: 2%;
 }
 
-/* @media (min-width: 576px) {
+@media only screen and (max-width: 576px) {
 	.container {
-		max-width: 540px;
-  }
+		-ms-flex-direction: column;
+		flex-direction: column;
+	}
+	.brand {
+	    width: 6em;
+	    height: auto;
+	    margin: 0 12px 0 0;
+	    padding: 12px;
+	}
 }
 
 @media (min-width: 768px) {
-	.container {
-		max-width: 720px;
-  }
+	.brand {
+		width: 6em;
+		height: auto;
+		margin: 0 12px 0 0;
+		padding: 12px;
+	}
 }
 
 @media (min-width: 992px) {
-	.container {
-		max-width: 960px;
-  }
+	.brand {
+		width: 7em;
+		height: auto;
+		margin: 0 12px 0 0;
+		padding: 12px;
+	}
 }
 
 @media (min-width: 1200px) {
-	.container {
-		max-width: 1140px;
-  }
+	.brand {
+		width: 9em;
+		height: auto;
+		margin: 0 12px 0 0;
+		padding: 12px;
+	}
 }
- */
+
 .menu {
 	flex-basis: 0;
 	flex-grow: 1;
@@ -107,13 +123,6 @@ body {
     align-items: center;
 }
 
-.brand {
-    width: 11em;
-    height: auto;
-    margin: 0 12px 0 0;
-    padding: 12px;
-}
-
 .brand-link {
 	width: 100%;
     height: auto;
@@ -122,5 +131,7 @@ body {
 
 .info {
 	color: #fff;
-    font-size: inherit;
+    font-size: 1.4rem;
+    font-family: 'Marck Script', cursive;
+    font-weight: lighter;
 }
